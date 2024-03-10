@@ -1,6 +1,6 @@
 import './style.css'
 import * as THREE from 'three'; // use three.js library
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'; // movement
 
 // SETUP
 
@@ -13,16 +13,16 @@ const renderer = new THREE.WebGLRenderer({ // create renderer
 renderer.setPixelRatio(window.devicePixelRatio); // pixel ratio = window pixel ratio
 renderer.setSize(window.innerWidth, window.innerHeight); // renderer size = window size, fullscreen
 camera.position.setZ(30); // move camera back on z axis
-//renderer.render(scene, camera); // render scene and camera
 
 // TORUS
 
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100); // create shape
+const geometry = new THREE.TorusGeometry(10, 3, 16, 100); // create torus shape
 const material = new THREE.MeshStandardMaterial({ color: 0xff6347}); // create material
 const torus = new THREE.Mesh(geometry, material); // combine shape and material
 scene.add(torus); // add shape to scene
 
 // LIGHTS
+
 const pointLight = new THREE.PointLight(0xffffff); // create point light
 pointLight.position.set(0,0,0); // set position of point light
 const ambientLight = new THREE.AmbientLight(0xffffff); // create flood light
@@ -34,6 +34,51 @@ const lightHelper = new THREE.PointLightHelper(pointLight); // point location fo
 const gridHelper = new THREE.GridHelper(200, 50); // horizontal line guide
 scene.add(lightHelper, gridHelper); // add helpers to scene
 const controls = new OrbitControls(camera, renderer.domElement); // allow you to move around w/camera
+
+// STARS
+
+function addStar() {
+    const geometry = new THREE.OctahedronGeometry(0.25, 0); // create shape
+    const material = new THREE.MeshStandardMaterial({color: 0xffffff}); // create material
+    const star = new THREE.Mesh(geometry, material); // combine shape and material
+
+    const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100)); // randomly generate 3 numbers from 0-100
+
+    star.position.set(x, y, z); // set star to randomized location
+    scene.add(star); // add star to scene
+}
+Array(200).fill().forEach(addStar); // array of 200 randomized stars
+
+// BACKGROUND
+
+const spaceTexture = new THREE.TextureLoader().load('space.jpg'); // create texture w/image
+scene.background = spaceTexture; // set background to texture
+
+// AVATAR
+
+const pfpTexture = new THREE.TextureLoader().load('pfpSQ.png'); // create texture w/image
+const adelina = new THREE.Mesh( // create new mesh
+    new THREE.BoxGeometry(3, 3, 3), // shape
+    new THREE.MeshBasicMaterial({map: pfpTexture})); // material
+scene.add(adelina); // add to scene
+adelina.position.z = -5; // set position
+adelina.position.x = 2; // set position
+
+// DISCO BALL
+
+const ballTexture = new THREE.TextureLoader().load('disco.jpg'); // create texture w/image
+const normalTexture = new THREE.TextureLoader().load('normal.jpg'); // create texture w/normal image
+
+const ball = new THREE.Mesh(
+    new THREE.SphereGeometry(3, 32, 32), // create shape
+    new THREE.MeshStandardMaterial({ // create texture
+        map: ballTexture, // image
+        normalMap: normalTexture // normal image
+    })
+);
+scene.add(ball); // add to scene
+ball.position.z = 30;
+ball.position.setX(-10);
 
 
 // RENDER + ANIMATION LOOP
@@ -49,6 +94,6 @@ function animate() {
 
   controls.update(); // constant update control/ location
 
-  renderer.render(scene, camera); // constant render
+  renderer.render(scene, camera); // constant render scene + camera
 }
 animate(); // call animate function
