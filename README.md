@@ -6,5 +6,5 @@ learning three.js
 
 note: to open from terminal
 
-cd adelinaTries3JS
+cd adelinaTries3JS <br>
 npm run dev

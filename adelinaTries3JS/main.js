@@ -18,7 +18,7 @@ camera.position.x = -3; // move camera slighly on x axis
 // TORUS
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100); // create torus shape
-const material = new THREE.MeshStandardMaterial({ color: 0xff6347}); // create material
+const material = new THREE.MeshStandardMaterial({ color: 0x0B99FF}); // create material
 const torus = new THREE.Mesh(geometry, material); // combine shape and material
 scene.add(torus); // add shape to scene
 
@@ -41,7 +41,7 @@ const controls = new OrbitControls(camera, renderer.domElement); // allow you to
 
 function addStar() {
     const geometry = new THREE.OctahedronGeometry(0.25, 0); // create shape
-    const material = new THREE.MeshStandardMaterial({color: 0xffffff}); // create material
+    const material = new THREE.MeshStandardMaterial({color: 0xFFFFFF}); // create material
     const star = new THREE.Mesh(geometry, material); // combine shape and material
 
     const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100)); // randomly generate 3 axis numbers from 0-100
