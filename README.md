@@ -8,3 +8,5 @@ note: to open from terminal
 
 cd adelinaTries3JS <br>
 npm run dev
+
+AdelinaMartinez
