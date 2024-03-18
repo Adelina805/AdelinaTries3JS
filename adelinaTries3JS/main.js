@@ -1,5 +1,5 @@
 import './style.css'
-import * as THREE from 'three'; // use three.js library
+import * as THREE from '/Users/adelinamartinez/Documents/GitHub/AdelinaTries3JS/adelinaTries3JS/node_modules/three'; // use three.js library
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'; // movement
 
 // SETUP
@@ -53,12 +53,12 @@ Array(200).fill().forEach(addStar); // add array of 200 randomized stars
 
 // BACKGROUND
 
-const spaceTexture = new THREE.TextureLoader().load('space.jpg'); // create texture w/image
+const spaceTexture = new THREE.TextureLoader().load('/Users/adelinamartinez/Documents/GitHub/AdelinaTries3JS/adelinaTries3JS/space.jpg'); // create texture w/image
 scene.background = spaceTexture; // set background to texture
 
 // AVATAR
 
-const adelinaTexture = new THREE.TextureLoader().load('adelina.png'); // create texture w/image
+const adelinaTexture = new THREE.TextureLoader().load('/Users/adelinamartinez/Documents/GitHub/AdelinaTries3JS/adelinaTries3JS/adelina.png'); // create texture w/image
 const adelina = new THREE.Mesh( // create new mesh
     new THREE.BoxGeometry(3, 3, 3), // shape
     new THREE.MeshBasicMaterial({map: adelinaTexture})); // material
@@ -68,8 +68,8 @@ adelina.position.x = 2; // set position
 
 // DISCO BALL
 
-const ballTexture = new THREE.TextureLoader().load('disco.jpg'); // create texture w/image
-const normalTexture = new THREE.TextureLoader().load('normal.jpg'); // create texture w/normal image
+const ballTexture = new THREE.TextureLoader().load('/Users/adelinamartinez/Documents/GitHub/AdelinaTries3JS/adelinaTries3JS/disco.jpg'); // create texture w/image
+const normalTexture = new THREE.TextureLoader().load('/Users/adelinamartinez/Documents/GitHub/AdelinaTries3JS/adelinaTries3JS/normal.jpg'); // create texture w/normal image
 
 const ball = new THREE.Mesh(
     new THREE.SphereGeometry(3, 32, 32), // create shape
