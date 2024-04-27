@@ -5,13 +5,13 @@ import * as THREE from 'three'; // use three.js library
 // SETUP
 
 const scene = new THREE.Scene(); // create scene
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); // create camera (FOV, aspect ration, view frustrum)
+const camera = new THREE.PerspectiveCamera(75, globalThis.innerWidth / globalThis.innerHeight, 0.1, 1000); // create camera (FOV, aspect ration, view frustrum)
 const renderer = new THREE.WebGLRenderer({ // create renderer
   canvas: document.querySelector('#bg'), // use canvas
 });
 
-renderer.setPixelRatio(window.devicePixelRatio); // pixel ratio = window pixel ratio
-renderer.setSize(window.innerWidth, window.innerHeight); // renderer size = window size, fullscreen
+renderer.setPixelRatio(globalThis.devicePixelRatio); // pixel ratio = window pixel ratio
+renderer.setSize(globalThis.innerWidth, globalThis.innerHeight); // renderer size = window size, fullscreen
 camera.position.z = 30; // move camera back on z axis
 camera.position.x = -3; // move camera slighly on x axis
 
