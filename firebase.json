@@ -1,8 +1,0 @@
-{
-  "hosting": {
-    "public": "adelinaTries3JS",
-    "ignore": [
-      "firebase.json"
-    ]
-  }
-}
